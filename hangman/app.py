@@ -1,31 +1,60 @@
 import random
+import hangman_steps
+import word_list
 
-
-
+print(hangman_steps.logo,'\n\n')
 #choosing a word
-word_list=['ardvark','baboon','camel']
+word_list=word_list.word_list
 chosen_word=word_list[random.randint(0,len(word_list)-1)]
-print(chosen_word)
-
-#get user's guess
-
-guessed_letter=input('Guess a letter: ').lower()
-
-#check if the letter is in guessed word
-for l in chosen_word:
-    if guessed_letter==l:
-        print('right')
-    else:
-        print('wrong')
-
 
 display=[]
+chances=6
+game_run=True
+
+#display cover word
 for _ in range(len(chosen_word)):
-    display.append('_')
-print(display)
+    display.append(' _ ')
 
-for index,letter in enumerate(chosen_word):
-    if guessed_letter==letter:
-        display[index]=letter
+print(f"\n\n{''.join(display)}\n\n")
 
-print(display)
+
+while game_run:
+    #get user's guess
+    guessed_letter=input('Guess a letter: ').lower()
+    
+    #check is it already in display list
+    if guessed_letter  in display:
+        print("!!! You have already given this letter !!!")
+
+    #check if the letter is in the word and replace underscores with proper letters
+    for l in chosen_word:
+        if guessed_letter==l:
+            for index,letter in enumerate(chosen_word):
+                if guessed_letter==letter:
+                    display[index]=letter
+    print(f"{''.join(display)}")
+
+    if guessed_letter not in chosen_word:
+        chances-=1
+        print(hangman_steps.stages[chances])
+
+    if chances==0:
+        print('-------> You loose <-------')
+        game_run=False
+    elif " _ " not in display:
+        print('-------> You won <-------')
+        game_run=False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
