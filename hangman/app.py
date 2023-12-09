@@ -10,7 +10,6 @@ print(hangman_steps.logo,'\n\n')
 #choosing a word
 word_list=word_list.word_list
 chosen_word=word_list[random.randint(0,len(word_list)-1)]
-print(chosen_word)
 
 display=[]
 chances=6
