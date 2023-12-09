@@ -27,10 +27,10 @@ print(f"\n\n{' '.join(display)}\n\n")
 while game_run:
     #get user's guess
     guessed_letter=input('Guess a letter: ').lower()
-    #check is it already in display list
+    
    
     clear()
-    
+    #check is it already in display list
     if guessed_letter  in display:
         print("!!! You have already given this letter !!!")
 
