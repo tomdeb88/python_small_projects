@@ -1,4 +1,7 @@
 import os
+from ascii_art import calculator
+
+
 
 def add(n1,n2):
     return n1 + n2
@@ -21,6 +24,7 @@ dict={"+":add,
 
 
 def calculating(number1,number2,operation):
+    print(calculator,"\n\n")
     return dict[operation](number1,number2)
 
 
