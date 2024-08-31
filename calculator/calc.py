@@ -24,7 +24,6 @@ dict={"+":add,
 
 
 def calculating(number1,number2,operation):
-    print(calculator,"\n\n")
     return dict[operation](number1,number2)
 
 
@@ -32,6 +31,7 @@ def calculating(number1,number2,operation):
 
 
 while True:
+    print(calculator,"\n\n")
     first_number=float(input("What's  the first number?: "))
     operator=input("+\n-\n*\n/\nPick an operator: ")
     second_number=float(input("What's the next number?: "))
