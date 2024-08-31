@@ -38,7 +38,7 @@ elif sum(comp_cards)==21:
     print(f"Computer's first card:{comp_cards}")
 
 
-another_card=input("Type 'y' for another card or 'n' to pass: ")
+
 
 
 
