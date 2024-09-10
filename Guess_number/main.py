@@ -1,45 +1,47 @@
 import random
-import art
+from art import logo
 
-random_num=random.randint(1,100)
-attempts=0
+random_number=random.randint(1,100)
 end=False
+def game_level():
+    difficulty=input('Choose a difficulty.Type "easy" or "hard": ').lower()
+    if difficulty=='easy':
+        return 10
+    elif difficulty=='hard':
+        return 5
+    else:
+        print("Choose difficulty. Try again")
+        exit()
+def compare(guessing_number,tries):
+    user_guess=int(input('Make a guess:'))
+    if user_guess<guessing_number:
+        print('Too low')
+        return tries - 1
+    elif user_guess>guessing_number:
+        print('Too high')
+        return tries -1
+    else:
+        return 'you win'
 
-print(art.logo)
-print("I'm thinking of a number between 1 and 100")
-difficulty=input("Choose a difficulty.Type 'easy' or 'hard':").lower()
 
-if difficulty=='easy':
-    attempts=10
-elif difficulty=='hard':
-    attempts=5
+print(logo)
+print('Welcome to the Number Guessing Game')
+print('I am thinking of a number between 1 and 100.')
 
-def compare(num,attempt):
-    if num<random_num:
-        print("Too low")
-        return attempt-1
-
-    elif num >random_num:
-        print("Too high")
-        return attempt-1
-
-    elif num==random_num:
-        print(f"You got it! The number is {random_num}")
-        return "game over"
-   
-
+attempts=game_level()
 
 while not end:
-    print(f"You have {attempts} attempts remaining to guess the number.")
-    guess=int(input("Make a guess: "))
-    attempts=compare(guess,attempts)
+    print(f"You have {attempts} attempts remaining to guess the number")
+    attempts=compare(random_number,attempts)
     if attempts==0:
-        print(f'Game over.Number is {random_num}')
+        print(f'You lose.The number is {random_number}')
         end=True
-    elif attempts=="game over":
+    elif attempts=='you win':
+        print(f'You got it! The guessing number is {random_number}')
         end=True
-    elif guess!=random_num:
-        print("Guess again! ")
+    elif attempts!=0:
+        print('Guess again')
+
 
 
 
