@@ -28,9 +28,9 @@ def play():
         if score>0:
             print(f"You are right! Current score: {score}")
         celebrity_2=picking_celebrity()
-        print(f"Compare A: {celebrity_1['name']}, a {celebrity_1['description']}, from {celebrity_1['country']}.{celebrity_1['follower_count']}")
+        print(f"Compare A: {celebrity_1['name']}, a {celebrity_1['description']}, from {celebrity_1['country']}.")
         print(art.vs)
-        print(f"Compare B: {celebrity_2['name']}, a {celebrity_2['description']}, from {celebrity_2['country']}.{celebrity_2['follower_count']}")
+        print(f"Compare B: {celebrity_2['name']}, a {celebrity_2['description']}, from {celebrity_2['country']}.")
         guess=input('Who has more followers? Type "A" or "B": ').lower()
 
 
@@ -52,8 +52,7 @@ def play():
 play()
 
     
-        
-
+    
 
 
 
