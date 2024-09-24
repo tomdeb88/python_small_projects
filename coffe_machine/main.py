@@ -13,11 +13,11 @@ def show_resources():
 
 def processing_coins(drink,coffees):
     print("Please insert coins")
-    quartes=int(input("How many quarters: "))
+    quarters=int(input("How many quarters: "))
     dimes=int(input("How many dimes?: "))
     nickles=int(input("How many nickles?: "))
     pennies=int(input("How many pennies?: "))
-    total=(quartes*0.25+dimes*0.10+nickles*0.05+pennies*0.01)
+    total=(quarters*0.25+dimes*0.10+nickles*0.05+pennies*0.01)
     if coffees[drink]['cost']>total:
         print("Sorry that's not enough money. Money refunded","$",total)
         return 0
@@ -41,31 +41,34 @@ while not off:
     elif response=='off':
         off=True
     elif response=="espresso":
+        profit+=processing_coins(response,MENU)
         if resources['water']>=MENU['espresso']['ingredients']['water'] and resources['coffee']>=MENU['espresso']['ingredients']['coffee']:
             resources['water']-=MENU['espresso']['ingredients']['water'] 
             resources['coffee']-=MENU['espresso']['ingredients']['coffee']
-            profit+=processing_coins(response,MENU)
+            
         else:
             print("Not enough ingredients")
     elif response=="latte":
+        profit+=processing_coins(response,MENU)
         if resources['water']>=MENU['latte']['ingredients']['water'] and resources['coffee']>=MENU['latte']['ingredients']['coffee'] and resources['milk']>=MENU['latte']['ingredients']['milk']:
             resources['water']-=MENU['latte']['ingredients']['water'] 
             resources['coffee']-=MENU['latte']['ingredients']['coffee']
             resources['milk']-=MENU['latte']['ingredients']['milk']
-            profit+=processing_coins(response,MENU)
+            
         else:
             print("Not enough ingredients")
     elif response=="cappuccino":
+        profit+=processing_coins(response,MENU)
         if resources['water']>=MENU['cappuccino']['ingredients']['water'] and resources['coffee']>=MENU['cappuccino']['ingredients']['coffee'] and resources['milk']>=MENU['cappuccino']['ingredients']['milk']:
             resources['water']-=MENU['cappuccino']['ingredients']['water'] 
             resources['coffee']-=MENU['cappuccino']['ingredients']['coffee']
             resources['milk']-=MENU['cappuccino']['ingredients']['milk']
-            profit+=processing_coins(response,MENU)
+            
         else:
             print("Not enough ingredients")
             
     else:
-        print("Wrong entrance")
+        print("Wrong input")
         off=True
 
     
