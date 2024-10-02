@@ -1,5 +1,6 @@
 # import colorgram
 from turtle import Turtle,Screen
+import random
 
 # colors=colorgram.extract('image.jpg',15)
 #
@@ -20,8 +21,30 @@ color_list=[(199, 175, 117), (125, 36, 24), (187, 158, 51), (170, 106, 56), (6, 
 
 tim=Turtle()
 screen=Screen()
+screen.colormode(255)
+tim.penup()
+tim.hideturtle()
+tim.setheading(225)
+tim.forward(250)
+tim.setheading(0)
+tim.pendown()
 
+def dots(dot_size,gape,row,columns):
+    x=1
+    y=gape
+    position = tim.position()
+    while x<=row:
 
+        for i in range(columns):
+            color=random.choice(color_list)
+            tim.dot(dot_size,color)
+            tim.penup()
+            tim.forward(gape)
+        tim.setposition(position[0],position[1]+y)
+        y+=gape
+        x+=1
+
+dots(20,50,7,7)
 
 
 
