@@ -2,14 +2,20 @@ import random
 from turtle import Turtle
 
 
-class Snack:
-    def __init__(self):
-        self.x_pos=random.randint(-280,280)
-        self.y_pos=random.randint(-280,280)
-        self.create_snack()
 
-    def create_snack(self):
-        snack=Turtle('circle')
-        snack.penup()
-        snack.color('red')
-        snack.goto(self.x_pos,self.y_pos)
+class Food(Turtle):
+    def __init__(self):
+        super().__init__()
+        self.shape("circle")
+        self.penup()
+        self.shapesize(stretch_wid=0.5,stretch_len=0.5)
+        self.color("red")
+        self.speed('fastest')
+        self.food_location()
+
+    def food_location(self):
+        x_position=random.randint(-280,280)
+        y_position=random.randint(-280,280)
+        self.goto(x_position,y_position)
+
+
