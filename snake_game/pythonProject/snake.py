@@ -24,6 +24,20 @@ class Snake:
             self.parts[part_position].goto(new_x_position,new_y_position)
         self.head.forward(20)
 
+
+
+
+    def prolongate_snake(self):
+        new_part = Turtle('square')
+        new_part.penup()
+        new_part.color('white')
+        position_of_last_part=self.parts[-1].position()
+        print(position_of_last_part)
+        new_part.goto(position_of_last_part)
+        self.parts.append(new_part)
+
+
+
     def up(self):
       if self.head.heading() !=270:
           self.head.setheading(90)

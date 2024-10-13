@@ -27,11 +27,24 @@ while game_is_on:
     time.sleep(0.1)
     snake.move()
 
-    print(snake.head.distance(snack))
+    #taking the snack
     if snake.head.distance(snack)< 15:
-        print('omomom')
         snack.food_location()
+        snake.prolongate_snake()
         score.add_point()
+
+    # hitting the wall
+    if snake.head.xcor()<-290 or snake.head.xcor()>290 or snake.head.ycor()<-290 or snake.head.ycor() > 290:
+        game_is_on=False
+        score.game_over()
+
+    # hitting the tail
+    for number in range(len(snake.parts)-1,0,-1):
+        if snake.head.distance(snake.parts[number].position())<15:
+            game_is_on=False
+            score.game_over()
+
+
 
 
 
