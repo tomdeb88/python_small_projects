@@ -8,11 +8,13 @@ class Snake:
         self.x_position=0
         self.create_snake()
         self.head=self.parts[0]
+        self.head.shape('img/snake_head.gif')
+
 
     def create_snake(self):
         for i in range(3):
-            new_part=Turtle('square')
-            new_part.color('white')
+            new_part=Turtle('circle')
+            new_part.color(0, 145, 68)
             new_part.penup()
             new_part.setposition(self.x_position,y=0)
             self.parts.append(new_part)
@@ -28,11 +30,10 @@ class Snake:
 
 
     def prolongate_snake(self):
-        new_part = Turtle('square')
+        new_part = Turtle('circle')
         new_part.penup()
-        new_part.color('white')
+        new_part.color(0, 145, 68)
         position_of_last_part=self.parts[-1].position()
-        print(position_of_last_part)
         new_part.goto(position_of_last_part)
         self.parts.append(new_part)
 

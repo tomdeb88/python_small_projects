@@ -9,6 +9,9 @@ screen.setup(width=600 , height=600)
 screen.bgcolor("black")
 screen.title("My Snake Game")
 screen.tracer(0)
+screen.register_shape("img/strawberry.gif")
+screen.register_shape("img/snake_head.gif")
+screen.colormode(255)
 
 snake=Snake()
 snack=Food()
@@ -28,7 +31,7 @@ while game_is_on:
     snake.move()
 
     #taking the snack
-    if snake.head.distance(snack)< 15:
+    if snake.head.distance(snack)< 20:
         snack.food_location()
         snake.prolongate_snake()
         score.add_point()
@@ -39,11 +42,10 @@ while game_is_on:
         score.game_over()
 
     # hitting the tail
-    for number in range(len(snake.parts)-1,0,-1):
-        if snake.head.distance(snake.parts[number].position())<15:
+    for part in snake.parts[1:]:
+        if snake.head.distance(part.position()) < 5:
             game_is_on=False
             score.game_over()
-
 
 
 
