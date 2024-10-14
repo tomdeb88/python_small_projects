@@ -3,6 +3,7 @@ from turtle import Turtle
 
 
 
+
 class Food(Turtle):
     def __init__(self):
         super().__init__()
@@ -16,5 +17,7 @@ class Food(Turtle):
         x_position=random.randint(-275,275)
         y_position=random.randint(-275,275)
         self.goto(x_position,y_position)
+
+
 
 

@@ -3,6 +3,7 @@ from snake import Snake
 from snack import Food
 from score import Score
 import time
+from sounds import Sound
 
 screen = Screen()
 screen.setup(width=600 , height=600)
@@ -16,6 +17,7 @@ screen.colormode(255)
 snake=Snake()
 snack=Food()
 score=Score()
+sound=Sound()
 
 
 screen.listen()
@@ -35,17 +37,20 @@ while game_is_on:
         snack.food_location()
         snake.prolongate_snake()
         score.add_point()
+        sound.eating_sound()
 
     # hitting the wall
     if snake.head.xcor()<-290 or snake.head.xcor()>290 or snake.head.ycor()<-290 or snake.head.ycor() > 290:
         game_is_on=False
         score.game_over()
+        sound.game_over()
 
     # hitting the tail
     for part in snake.parts[1:]:
-        if snake.head.distance(part.position()) < 5:
+        if snake.head.distance(part.position()) < 15:
             game_is_on=False
             score.game_over()
+            sound.game_over()
 
 
 
