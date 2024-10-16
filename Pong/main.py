@@ -27,6 +27,7 @@ while game_on:
     screen.update()
     ball.move()
 
+print('ok')
 
 
 
